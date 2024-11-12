@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}]  %-5level  - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/myapp.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}]  %-5level  - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- Define un logger raíz para capturar todos los eventos -->
+    <logger name=" com.example.pruebaXD " level="DEBUG"/>
+    <logger name=" com.example.pruebaXD " level="INFO"/>
+    <!-- Agrega un logger para capturar los eventos de nivel ERROR -->
+    <logger name="org.springframework" level="ERROR"/>
+    <!-- Configura un logger para capturar las excepciones y errores inesperados -->
+    <logger name="org.apache.catalina.core" level="ERROR"/>
+    <logger name="org.apache.coyote.http11.Http11NioProtocol" level="ERROR"/>
+    <logger name="org.apache.tomcat.util.net.NioSelectorPool" level="ERROR"/>
+
+ <!-- Logger raíz con nivel INFO -->
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- Logger raíz con nivel ERROR -->
+    <root level="ERROR">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root> 
+</configuration>
